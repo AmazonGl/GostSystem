@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+body {
+  background: #0d0f14;
+  color: #e2e4f0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3a3d4f; border-radius: 2px; }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-bg hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-dim hover:text-text hover:bg-card border border-border;
+  }
+  .btn-danger {
+    @apply btn bg-transparent text-danger hover:bg-danger hover:text-white border border-danger/40;
+  }
+  .input {
+    @apply w-full bg-surface border border-border rounded px-3 py-2 text-sm text-text placeholder:text-muted
+           focus:outline-none focus:border-accent/60 transition-colors;
+  }
+  .card {
+    @apply bg-card border border-border rounded-lg p-5;
+  }
+  .label {
+    @apply text-xs text-dim uppercase tracking-widest font-mono mb-1 block;
+  }
+  .tag {
+    @apply inline-block px-2 py-0.5 rounded text-xs font-mono bg-surface border border-border text-dim;
+  }
+}
