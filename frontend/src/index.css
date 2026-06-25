@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, :root[data-theme="dark"] {
+  --c-bg:      13 15 20;
+  --c-surface: 19 22 30;
+  --c-card:    26 29 39;
+  --c-border:  37 40 54;
+  --c-muted:   58 61 79;
+  --c-text:    226 228 240;
+  --c-dim:     123 127 150;
+  --c-accent:  240 180 41;
+  --c-accent-hover: 224 168 32;
+  --c-danger:  240 82 82;
+  --c-success: 52 211 153;
+  --c-info:    96 165 250;
+}
+
+:root[data-theme="light"] {
+  --c-bg:      245 246 248;
+  --c-surface: 255 255 255;
+  --c-card:    255 255 255;
+  --c-border:  226 229 236;
+  --c-muted:   185 189 202;
+  --c-text:    28 30 38;
+  --c-dim:     94 98 115;
+  --c-accent:  200 144 26;
+  --c-accent-hover: 176 126 20;
+  --c-danger:  214 59 59;
+  --c-success: 22 163 74;
+  --c-info:    37 99 235;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-text));
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(var(--c-muted)); border-radius: 2px; }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-bg hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-dim hover:text-text hover:bg-card border border-border;
+  }
+  .btn-danger {
+    @apply btn bg-transparent text-danger hover:bg-danger hover:text-white border border-danger/40;
+  }
+  .input {
+    @apply w-full bg-surface border border-border rounded px-3 py-2 text-sm text-text placeholder:text-muted
+           focus:outline-none focus:border-accent/60 transition-colors;
+  }
+  .card {
+    @apply bg-card border border-border rounded-lg p-5;
+  }
+  .label {
+    @apply text-xs text-dim uppercase tracking-widest font-mono mb-1 block;
+  }
+  .tag {
+    @apply inline-block px-2 py-0.5 rounded text-xs font-mono bg-surface border border-border text-dim;
+  }
+}
